@@ -4,6 +4,7 @@ import cors from "cors"
 import bodyParser from "body-parser"
 import dotenv from "dotenv"
 import connectdb from "./config/db";
+import StudentRoute from "./routes/StudentRoute"
 
 
 dotenv.config()
@@ -14,6 +15,8 @@ app.use(cors())
 app.use(bodyParser.json())
 
 connectdb()
+
+app.use("/",StudentRoute)
 
 
 app.get("/",(req,res)=>{
