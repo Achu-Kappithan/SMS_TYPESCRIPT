@@ -5,3 +5,7 @@ import {IsStudent } from "../interfaces/StudentInterface";
 export const createStudent = async (studentData: IsStudent) => {
   return await Student.create(studentData); 
 };
+
+export const getAllstudents = async ()=>{
+    return await Student.find()
+}
