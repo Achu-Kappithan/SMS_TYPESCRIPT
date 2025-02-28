@@ -1,4 +1,4 @@
-;import { createStudent,getAllstudents ,Update} from "../repositories/StudentRepositery";
+;import { createStudent,getAllstudents ,Update,remove} from "../repositories/StudentRepositery";
 import { IsStudent } from "../interfaces/StudentInterface";
 
 // Register a new student
@@ -12,4 +12,8 @@ export const ftethAllstudents = async ()=>{
 
 export const UpdatetoDatabase = async (StudentId:string,Data:Partial<IsStudent>)=>{
   return await Update(StudentId,Data)
+}
+
+export const Removedata = async (Id:string)=>{
+  return await remove(Id)
 }

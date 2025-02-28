@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { registerStudent, ftethAllstudents,UpdatetoDatabase} from "../services/StudentServices";
+import { registerStudent, ftethAllstudents,UpdatetoDatabase,Removedata} from "../services/StudentServices";
 import Student from "../modals/StudentModel";
 import { object } from "webidl-conversions";
 import { rejects } from "node:assert";
@@ -38,4 +38,19 @@ export const updateStudets = async (req:Request,res:Response)=>{
   } catch (error) {
     res.status(500).json({error: "Faild to update teh studen"})
   }
+}
+
+export const RemoveStudent = async (req:Request, res: Response)=>{
+  try {
+    const {Id} = req.params
+    const data = await Removedata(Id)
+    if(!data){
+      res.status(404).json({ error: "Student not found" });
+      return 
+    }
+    res.status(200).json({ message: "Student deleted successfully" });
+  } catch (error) {
+    res.status(500).json({error:"Faild to remove Student"})
+  }
+
 }
